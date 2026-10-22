@@ -43,3 +43,25 @@ int evalRPN(char** tokens, int tokensSize) {
     }
     return arr[0];
 }
+
+
+#include<stdbool.h>
+//   LeetCode 946.验证栈序列
+
+bool validateStackSequences(int* pushed, int pushedSize, int* popped, int poppedSize) {
+    //创建一个栈
+    int stack[1000];
+    int top = 0;
+    int j = 0;
+    for (int i = 0; i < pushedSize; i++)
+    {
+        stack[top] = pushed[i];
+        top++;
+        while (top > 0 && stack[top - 1] == popped[j])
+        {
+            top--;
+            j++;
+        }
+    }
+    return top == 0;
+}
